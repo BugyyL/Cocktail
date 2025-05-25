@@ -3,90 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cocktailautomat | Menü</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet"/>
+  <title>Cocktailautomat | Kirmes Klettbach/Schellroda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: radial-gradient(circle at top, #1a1a1a, #000);
+      background: #1a0b0b;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
+      font-family: 'Roboto', sans-serif;
     }
 
     header {
-      background: #111;
-      padding: 20px 10px;
+      background: linear-gradient(145deg, #b30000, #660000);
       text-align: center;
-      border-bottom: 2px solid #0ff;
-      box-shadow: 0 0 10px #0ff;
+      padding: 30px 20px;
+      border-bottom: 4px solid gold;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
     }
 
     header h1 {
-      font-family: 'Orbitron', sans-serif;
-      color: #0ff;
-      font-size: 2.5rem;
-      margin: 0;
-      text-shadow: 0 0 10px #0ff;
+      font-family: 'Playfair Display', serif;
+      color: gold;
+      font-size: 2.2rem;
+      margin: 10px 0 5px;
     }
 
-    .menu-section {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+    header p {
+      font-size: 1rem;
+      color: #f0e6d2;
     }
 
-    .menu-frame {
-      width: 100%;
-      max-width: 1000px;
-      height: 90%;
-      border: 2px solid #0ff;
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #330000, #220000);
+      border: 2px solid gold;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    }
+
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #f1f1f1;
     }
 
     footer {
       text-align: center;
-      padding: 10px;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      .menu-frame {
-        height: 80%;
-      }
+      padding: 20px;
+      background: #110000;
+      color: #a88;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>COCKTAILAUTOMAT</h1>
+    <img src="logo.jpg" alt="Kirmesgesellschaft Logo" />
+    <h1>Cocktailautomat</h1>
+    <p>Kirmesgesellschaft Klettbach/Schellroda • Est. 2019</p>
   </header>
 
-  <div class="menu-section">
-    <div class="menu-frame">
-      <iframe src="cocktailkarte.pdf"></iframe>
+  <div class="container">
+    <div class="card">
+      <h2>White Lady</h2>
+      <p>Gin, Triple Sec, Limette</p>
+    </div>
+
+    <div class="card">
+      <h2>Mojito</h2>
+      <p>Weißer Rum, Limette, Zuckersirup, Rohrzucker, Soda, Minzblätter</p>
+    </div>
+
+    <div class="card">
+      <h2>Sex on the Beach</h2>
+      <p>Vodka, Maracuja, Orange, Grenadine</p>
+    </div>
+
+    <div class="card">
+      <h2>Long Island Iced Tea</h2>
+      <p>Tequila, Vodka, Triple Sec, Gin, Zitronensaft, Zuckersirup, Cola</p>
+    </div>
+
+    <div class="card">
+      <h2>Tropical Sunrise</h2>
+      <p>Rum, Maracuja, Orange, Grenadine</p>
+    </div>
+
+    <div class="card">
+      <h2>Blue Lagoon</h2>
+      <p>Blue Curaçao, Vodka, Orange, Maracuja</p>
+    </div>
+
+    <div class="card">
+      <h2>Swimming Pool</h2>
+      <p>Rum, Blue Curaçao, Maracuja, Kokossirup</p>
+    </div>
+
+    <div class="card">
+      <h2>Kornblume</h2>
+      <p>Korn, Blue Curaçao, Orange</p>
+    </div>
+
+    <div class="card">
+      <h2>Caribbean Blue Punch</h2>
+      <p>Blue Curaçao, Rum, Vodka, Maracuja, Orange, Sprite, Limette</p>
+    </div>
+
+    <div class="card">
+      <h2>Blue Pasion</h2>
+      <p>Gin, Blue Curaçao, Maracuja, Zuckersirup</p>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 Automatisierte Bar | Powered by CocktailAI
+    &copy; 2025 Kirmesgesellschaft Klettbach/Schellroda • Automatisierte Cocktailauswahl
   </footer>
 
 </body>
