@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cocktailautomat | Sommerkarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet"/>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cocktailautomat | Sommerkarte
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&amp;family=Roboto&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --cyan: #00acc1;
       --yellow: #ffca28;
       --orange: #ff7043;
@@ -107,13 +110,6 @@
       margin-top: 0.35rem;
     }
 
-    .drink-name svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--yellow);
-      flex-shrink: 0;
-    }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -122,78 +118,694 @@
       background: linear-gradient(to right, #2a5298, #1e3c72);
     }
   </style>
-</head>
-<body>
-
+  <style>
+   .modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal-content {
+  background-color: #2a5298;
+  position: relative;
+  margin: 0 auto;
+  top: 10%;
+  transform: translateY(0);
+  padding: 20px;
+  border: none;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  border-radius: 16px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #ffca28;
+}
+.modal-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+.modal-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.close {
+  color: #ffffff;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-close-button {
+  display: block;
+  margin: 1.5rem auto 0 auto;
+  padding: 0.5rem 1.5rem;
+  background-color: #ff7043;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.modal-close-button:hover {
+  background-color: #e95c2f;
+}
+@media (max-width: 480px) {
+  .modal-content {
+    font-size: 1rem;
+    padding: 18px;
+    width: 95%;
+    max-height: 85vh;
+  }
+}
+  </style>
+ </head>
+ <body>
   <header>
-    <h1>☀️ COCKTAILAUTOMAT ☀️</h1>
+   <h1>
+    ☀️ COCKTAILAUTOMAT ☀️
+   </h1>
   </header>
-
   <div class="menu-section">
-
-    <div class="menu-category">
-      <h2>🍹 Cocktails</h2>
-      <div class="grid">
-        <div class="card"><div class="drink-name">🍹 White Lady</div><div class="ingredients">Gin, Triple Sec, Limette</div></div>
-        <div class="card"><div class="drink-name">🍋 Mojito</div><div class="ingredients">Weißer Rum, Limette, Zuckersirup, Rohrzucker, Soda, Minze</div></div>
-        <div class="card"><div class="drink-name">🌴 Sex on the Beach</div><div class="ingredients">Vodka, Maracuja, Orange, Grenadine</div></div>
-        <div class="card"><div class="drink-name">☕ Long Island Iced Tea</div><div class="ingredients">Tequila, Vodka, Triple Sec, Gin, Zitronensaft, Zuckersirup, Cola</div></div>
-        <div class="card"><div class="drink-name">🌞 Tropical Sunrise</div><div class="ingredients">Rum, Maracuja, Orange, Grenadine</div></div>
-        <div class="card"><div class="drink-name">🌊 Blue Lagoon</div><div class="ingredients">Blue Curacao, Vodka, Orange, Maracuja</div></div>
-        <div class="card"><div class="drink-name">🫖 Swimming Pool</div><div class="ingredients">Rum, Blue Curacao, Maracuja, Kokossirup</div></div>
-        <div class="card"><div class="drink-name">🌿 Kornblume</div><div class="ingredients">Korn, Blue Curacao, Orange</div></div>
-        <div class="card"><div class="drink-name">🥛 Caribbean Blue Punch</div><div class="ingredients">Blue Curacao, Rum, Vodka, Maracuja, Orange, Sprite, Limette</div></div>
-        <div class="card"><div class="drink-name">🌊 Blue Pasion</div><div class="ingredients">Gin, Blue Curacao, Maracuja, Zuckersirup</div></div>
+   <div class="menu-category">
+    <h2>
+     🍹 Cocktails
+    </h2>
+    <div class="grid">
+     <div class="card" onclick="showModal('modal-1')">
+      <div class="drink-name">
+       1. White Lady
       </div>
-    </div>
-
-    <div class="menu-category">
-      <h2>🍺 Longdrinks & Specials</h2>
-      <div class="grid">
-        <div class="card"><div class="drink-name">🍼 Havanna Cola</div></div>
-        <div class="card"><div class="drink-name">🍽 Gin Tonic</div></div>
-        <div class="card"><div class="drink-name">🍺 Rum Tonic</div></div>
-        <div class="card"><div class="drink-name">🍇 Korn Maracuja</div></div>
-        <div class="card"><div class="drink-name">🌪 Fanta Korn</div></div>
-        <div class="card"><div class="drink-name">🦅 Flying Hirsch</div></div>
-        <div class="card"><div class="drink-name">⚡ Vodka E</div></div>
-        <div class="card"><div class="drink-name">🍍 Jäger Maracuja</div></div>
-        <div class="card"><div class="drink-name">🧃 Vodka Sprite</div></div>
-        <div class="card"><div class="drink-name">🌿 Grüne Wiese</div></div>
-        <div class="card"><div class="drink-name">🌧 Flying Robin</div></div>
-        <div class="card"><div class="drink-name">🧾 Klettbacher Barbaren</div></div>
-        <div class="card"><div class="drink-name">🗡 Schellroda Barbaren</div></div>
-        <div class="card"><div class="drink-name">♻ Alt Öl</div></div>
-        <div class="card"><div class="drink-name">🚗 Es geht jetzt heim</div></div>
-        <div class="card"><div class="drink-name">🛌 Der Letzte</div></div>
+     </div>
+     <div class="card" onclick="showModal('modal-2')">
+      <div class="drink-name">
+       2. Mojito
       </div>
-    </div>
-
-    <div class="menu-category">
-      <h2>🍾 Spirituosen (4 cl)</h2>
-      <div class="grid">
-        <div class="card"><div class="drink-name">🫙 Rum</div></div>
-        <div class="card"><div class="drink-name">🧃 Jägermeister</div></div>
-        <div class="card"><div class="drink-name">🫘 Korn</div></div>
-        <div class="card"><div class="drink-name">🧄 Gin</div></div>
-        <div class="card"><div class="drink-name">🍻 Vodka</div></div>
-        <div class="card"><div class="drink-name">🌿 Blue Curacao</div></div>
+     </div>
+     <div class="card" onclick="showModal('modal-3')">
+      <div class="drink-name">
+       3. Sex on the Beach
       </div>
-    </div>
-
-    <div class="menu-category">
-      <h2>🍓 Alkoholfreie Getränke (6 cl)</h2>
-      <div class="grid">
-        <div class="card"><div class="drink-name">🍍 Maracuja</div></div>
-        <div class="card"><div class="drink-name">🍊 Orange</div></div>
+     </div>
+     <div class="card" onclick="showModal('modal-4')">
+      <div class="drink-name">
+       4. Long Island Ice Tea
       </div>
+     </div>
+     <div class="card" onclick="showModal('modal-5')">
+      <div class="drink-name">
+       5. Tropical Sunrise
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-6')">
+      <div class="drink-name">
+       6. Blue Lagoon
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-7')">
+      <div class="drink-name">
+       7. Swimming Pool
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-8')">
+      <div class="drink-name">
+       8. Kornblume
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-9')">
+      <div class="drink-name">
+       9. Carribian Blue Punch
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-10')">
+      <div class="drink-name">
+       10. Blue Pssion
+      </div>
+     </div>
     </div>
-
+   </div>
+   <div class="menu-category">
+    <h2>
+     🍺 Longdrinks &amp; Specials
+    </h2>
+    <div class="grid">
+     <div class="card" onclick="showModal('modal-11')">
+      <div class="drink-name">
+       11. Havanna Cola
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-12')">
+      <div class="drink-name">
+       12. Gin Tonic
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-13')">
+      <div class="drink-name">
+       13. Rum Tonic
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-14')">
+      <div class="drink-name">
+       14. Korn Maracuja
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-15')">
+      <div class="drink-name">
+       15. Fanta Korn
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-16')">
+      <div class="drink-name">
+       16. Flying Hirsch
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-17')">
+      <div class="drink-name">
+       17. vodka E
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-18')">
+      <div class="drink-name">
+       18. Jäger Maracuja
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-19')">
+      <div class="drink-name">
+       19. Vodka Sprite
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-20')">
+      <div class="drink-name">
+       20. Grüne Wiese
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-21')">
+      <div class="drink-name">
+       21. Flying Robin
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-22')">
+      <div class="drink-name">
+       22. Klettbacher Barbar
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-23')">
+      <div class="drink-name">
+       23. Schellroder Barbar
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-24')">
+      <div class="drink-name">
+       24. Altöl
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-25')">
+      <div class="drink-name">
+       25. Es geht jetzt heim
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-26')">
+      <div class="drink-name">
+       26. der Letzte
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="menu-category">
+    <h2>
+     🍾 Spirituosen (4 cl)
+    </h2>
+    <div class="grid">
+     <div class="card" onclick="showModal('modal-27')">
+      <div class="drink-name">
+       27. Rum
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-28')">
+      <div class="drink-name">
+       28. Jägermeister
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-29')">
+      <div class="drink-name">
+       29. Korn
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-30')">
+      <div class="drink-name">
+       30. Gin
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-31')">
+      <div class="drink-name">
+       31. Vodka
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-32')">
+      <div class="drink-name">
+       32. Blue Curacao
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="menu-category">
+    <h2>
+     🍓 Alkoholfreie Getränke (6 cl)
+    </h2>
+    <div class="grid">
+     <div class="card" onclick="showModal('modal-33')">
+      <div class="drink-name">
+       33. Maracuja saft
+      </div>
+     </div>
+     <div class="card" onclick="showModal('modal-34')">
+      <div class="drink-name">
+       34. Orangensaft
+      </div>
+     </div>
+    </div>
+   </div>
   </div>
-
   <footer>
-    &copy; 2025 Automatisierte Bar | Powered by CocktailAI – Genieße den Sommer 🌴
+   © 2025 Automatisierte Bar | Powered by CocktailAI – Genieße den Sommer 🌴
   </footer>
-
-</body>
+  <script>
+   function showModal(id) {
+  document.getElementById(id).style.display = 'block';
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+window.onclick = function(event) {
+  document.querySelectorAll('.modal').forEach(modal => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+}
+  </script>
+  <div class="modal" id="modal-1">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-1')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Limetten
+     </li>
+     <li>
+      Triple sec
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-1')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-2">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-2')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Zuckersirup
+     </li>
+     <li>
+      Limetten
+     </li>
+     <li>
+      Minze
+     </li>
+     <li>
+      Wasser
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-2')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-3">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-3')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Grenadine
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-3')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-4">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-4')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Zuckersirup
+     </li>
+     <li>
+      Cola
+     </li>
+     <li>
+      Zitrone
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-4')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-5">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-5')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Grenadine
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-5')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-9">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-9')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Limetten
+     </li>
+     <li>
+      Sprite
+     </li>
+     <li>
+      Zitrone
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-9')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-10">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-10')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Zuckersirup
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-10')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-11">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-11')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Limetten
+     </li>
+     <li>
+      Cola
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-11')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-12">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-12')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Tonic
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-12')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-13">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-13')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Tonic
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-13')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-15">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-15')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Fanta
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-15')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-16">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-16')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Energy
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-16')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-17">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-17')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Energy
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-17')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-19">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-19')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Sprite
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-19')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-21">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-21')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Minze
+     </li>
+     <li>
+      Zitrone
+     </li>
+     <li>
+      Tonic
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-21')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-22">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-22')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Sprite
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-22')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-23">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-23')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Fanta
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-23')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-25">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-25')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Sprite
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-25')">
+     Schließen
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="modal-26">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-26')">
+     ×
+    </span>
+    <h3>
+     Zutaten
+    </h3>
+    <ul>
+     <li>
+      Grenadine
+     </li>
+     <li>
+      Zuckersirup
+     </li>
+     <li>
+      Limetten
+     </li>
+     <li>
+      Minze
+     </li>
+     <li>
+      Sprite
+     </li>
+    </ul>
+    <button class="modal-close-button" onclick="closeModal('modal-26')">
+     Schließen
+    </button>
+   </div>
+  </div>
+ </body>
 </html>
